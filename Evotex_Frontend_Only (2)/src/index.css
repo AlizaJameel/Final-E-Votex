@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-evotex-surface text-gray-900 font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .evotex-card {
+    @apply bg-white rounded-card border border-gray-200 shadow-card;
+  }
+  .evotex-input {
+    @apply w-full border border-gray-200 rounded-input px-4 py-3 text-sm outline-none transition-shadow
+      focus:border-evotex-primary focus:ring-2 focus:ring-evotex-mint-border text-gray-900;
+  }
+  .evotex-btn-primary {
+    @apply bg-evotex-primary hover:bg-evotex-primary-hover text-white font-semibold rounded-input
+      px-6 py-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .evotex-btn-outline {
+    @apply border-2 border-evotex-primary text-evotex-primary hover:bg-evotex-mint font-semibold
+      rounded-input px-6 py-3 transition-colors;
+  }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slideUp 0.25s ease-out; }

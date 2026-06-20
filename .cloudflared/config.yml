@@ -1,0 +1,20 @@
+# E-Votex named Cloudflare tunnel — SINGLE ORIGIN (required for WebAuthn)
+#
+# Public URL:  https://evotex.evotex.com
+#   → Vite :5173 (React app)
+#   → /api/* proxied by Vite to Express :5001 (backend is NOT a separate tunnel host)
+#
+# Setup (one time):
+#   npx cloudflared tunnel login
+#   npx cloudflared tunnel create evotex
+#   npx cloudflared tunnel route dns evotex evotex.evotex.com
+# Replace USER_TUNNEL_ID_PLACEHOLDER below with the UUID from `tunnel create`.
+
+tunnel: 1c911d08-b829-42b0-8dc0-b6ab40d558a5
+credentials-file: C:\Users\binty safdar\.cloudflared\1c911d08-b829-42b0-8dc0-b6ab40d558a5.json
+
+ingress:
+  # Frontend + API (via Vite /api proxy → localhost:5001)
+  - hostname: evotex.evotex.com
+    service: http://localhost:5173
+  - service: http_status:404
